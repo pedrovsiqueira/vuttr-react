@@ -1,12 +1,14 @@
 import React from "react";
 import { Container, Content } from "./styles";
 
-const Card = ({ title, description, tags }) => {
+const Card = ({ title, description, link, tags }) => {
   return (
     <Container>
       <Content>
         <div>
-          <h4>{title}</h4>
+          <a href={link}>
+            <h4>{title}</h4>
+          </a>
           <button>X remove</button>
         </div>
         <p>{description}</p>
