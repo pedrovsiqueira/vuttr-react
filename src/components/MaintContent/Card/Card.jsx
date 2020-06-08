@@ -1,17 +1,19 @@
 import React from "react";
 import { Container, Content } from "./styles";
 
-const Header = () => {
+const Card = ({ title, description, tags }) => {
   return (
     <Container>
       <Content>
         <div>
-          <h1>VUTTR</h1>
-          <h3>Very Useful Tools to remember</h3>
+          <h4>{title}</h4>
+          <button>X remove</button>
         </div>
+        <p>{description}</p>
+        <p>{tags}</p>
       </Content>
     </Container>
   );
 };
 
-export default Header;
+export default Card;
