@@ -6,9 +6,11 @@ import { ContextProvider } from "./Context";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
+  <React.StrictMode>
     <ContextProvider>
       <App />
-    </ContextProvider>,
+    </ContextProvider>
+  </React.StrictMode>,
   document.getElementById("root")
 );
 
