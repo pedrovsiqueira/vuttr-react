@@ -20,9 +20,13 @@ const SearchBar = () => {
     tags: tagsToolRef,
   };
 
-  const { setSearchString, modalAdd, setModalAdd, handleAdd } = useContext(
-    Context
-  );
+  const {
+    setSearchString,
+    modalAdd,
+    setModalAdd,
+    handleAdd,
+    handleCheckBoxClick,
+  } = useContext(Context);
 
   const body = (
     <>
@@ -62,6 +66,7 @@ const SearchBar = () => {
           type="checkbox"
           name="checkbox"
           id="checkbox"
+          onClick={() => handleCheckBoxClick(checkedRef)}
         />
         <label htmlFor="checkbox">search in tags only</label>
       </div>
