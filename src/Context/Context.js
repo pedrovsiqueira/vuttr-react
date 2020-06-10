@@ -4,9 +4,8 @@ import axios from "axios";
 const Context = createContext({});
 
 const ContextProvider = ({ children }) => {
-  const [modal, setModal] = useState(false);
-  const [modalAdd, setModalAdd] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [isRemoved, setIsRemoved] = useState(false)
 
   const [tools, setTools] = useState([]);
   const [searchString, setSearchString] = useState("");
@@ -36,18 +35,17 @@ const ContextProvider = ({ children }) => {
 
   useEffect(() => {
     const query = checked ? "?tags_like=" : "?q=";
-
     axios
       .get(`${url}${query}${searchString}`)
       .then((resp) => {
         setTools(resp.data);
       })
       .catch((err) => console.log(err));
+  }, [checked, searchString, isRemoved]);
 
-  }, [checked, searchString]);
-
-  const handleRemove = (id) => {
-    setTools((prevTools) => prevTools.filter((item) => item.id !== id));
+  const handleRemove = async (id) => {
+    setIsRemoved(!isRemoved)
+    await axios.delete(`${url}/${id}`)
   };
 
   return (
@@ -58,10 +56,6 @@ const ContextProvider = ({ children }) => {
         setTools,
         setSearchString,
         searchString,
-        modal,
-        setModal,
-        modalAdd,
-        setModalAdd,
         handleAdd,
         url,
         handleCheckBoxClick,

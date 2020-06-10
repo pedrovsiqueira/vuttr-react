@@ -2,8 +2,7 @@ import React, { useContext, useRef } from "react";
 import { Content } from "./styles";
 import searchIcon from "../../assets/icons/search-icon.svg";
 import { Context } from "../../Context/Context";
-import Modal from "react-modal";
-import { styleModal } from "../../Context/styles";
+import Modali, { useModali } from "modali";
 
 const SearchBar = () => {
   const searchRef = useRef(null);
@@ -12,6 +11,8 @@ const SearchBar = () => {
   const linkToolRef = useRef(null);
   const descriptionToolRef = useRef(null);
   const tagsToolRef = useRef(null);
+
+  const [exampleModal, toggleExampleModal] = useModali();
 
   const toolRefs = {
     title: titleToolRef,
@@ -22,8 +23,6 @@ const SearchBar = () => {
 
   const {
     setSearchString,
-    modalAdd,
-    setModalAdd,
     handleAdd,
     handleCheckBoxClick,
   } = useContext(Context);
@@ -70,10 +69,8 @@ const SearchBar = () => {
         />
         <label htmlFor="checkbox">search in tags only</label>
       </div>
-      <button onClick={() => setModalAdd(true)}>add</button>
-      <Modal isOpen={modalAdd} style={styleModal}>
-        {body}
-      </Modal>
+      <button onClick={toggleExampleModal}>add</button>
+      <Modali.Modal {...exampleModal}>{body}</Modali.Modal>
     </Content>
   );
 };
