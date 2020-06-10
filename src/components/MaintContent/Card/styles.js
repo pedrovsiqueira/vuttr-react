@@ -28,6 +28,4 @@ export const Content = styled.div`
     width: 10px;
     filter: brightness(0%);
   }
-
-
 `;

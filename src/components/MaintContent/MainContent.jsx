@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Card from "./Card/Card";
-import { Context } from "../../Context";
+import { Context } from "../../Context/Context";
 
 const MainContent = () => {
   const { tools, searchString } = useContext(Context);
